@@ -18,6 +18,19 @@ var svg = d3
     .attr("width", svgWidth)
     .attr("height", svgHeight);
 
-//append
+// append
 var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
+// parameters
+var chosenXAxis = "smokes";
+var chosenYAxis = "age";
+
+// function to update scale upon click
+function xScale(censusData, chosenXAxis) {
+    var xLinearScale = d3.scaleLinear()
+        .domain([d3.min(censusData, d => d[chosenXAxis]) * 0.8,
+            d3.max(censusData, d => d[chosenXAxis]) * 1.2
+        ])
+        .range([0, width]);
+
+    return xLinearScale;
