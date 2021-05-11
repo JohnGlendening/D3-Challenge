@@ -266,31 +266,27 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         .classed("inactive", true)
         .text("Poverty (%)");
 
-    // updateToolTip function above csv import
+    // updateToolTip 
     var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
-    // x axis labels event listener
     xLabelsGroup.selectAll("text")
         .on("click", function() {
-            // get value of selection
             var xValue = d3.select(this).attr("value");
             if (xValue !== chosenXAxis) {
 
-                // replaces chosenXAxis with value
                 chosenXAxis = xValue;
 
-                // functions here found above csv import
-                // updates x scale for new data
+                // updates x scale 
                 xLinearScale = xScale(censusData, chosenXAxis);
 
-                // updates x axis with transition
+                // updates x axis 
                 xAxis = renderXAxes(xLinearScale, xAxis);
 
-                // updates circles and circle text with new x values
+                // updates circles
                 circlesGroup = renderXCircles(circlesGroup, xLinearScale, chosenXAxis);
                 textCircles = renderXCircleText(textCircles, xLinearScale, chosenXAxis);
 
-                // updates tooltips with new info
+                // updates tooltips 
                 circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
                 if (chosenXAxis === "obesity") {
