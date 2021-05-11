@@ -6,6 +6,9 @@
 Note: You'll need to use python -m http.server to run the visualization. This will host the page at localhost:8000 in your web browser.
 Or you can do what I do and use Live Server to open the page quicker and easier.
 
+![D3Capture](https://user-images.githubusercontent.com/66345555/117756366-a17dc980-b1e3-11eb-806f-85b6694a0d83.PNG)
+
+
 
 
 
