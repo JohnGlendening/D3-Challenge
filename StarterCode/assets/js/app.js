@@ -1,4 +1,3 @@
-// @TODO: YOUR CODE HERE!
 var svgWidth = 960;
 var svgHeight = 500;
 
@@ -139,7 +138,6 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     circlesGroup.on("mouseover", function(data) {
             toolTip.show(data);
         })
-        // onmouseout event
         .on("mouseout", function(data, index) {
             toolTip.hide(data);
         });
@@ -149,7 +147,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 (async function() {
     var censusData = await d3.csv("assets/data/data.csv").catch(err => console.log(err))
 
-    // Parse data. Convert CSV data to integers
+    // Parse data
     censusData.forEach(function(data) {
         data.id = +data.id;
         data.poverty = +data.poverty;
