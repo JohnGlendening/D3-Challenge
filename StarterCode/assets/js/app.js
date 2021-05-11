@@ -146,3 +146,25 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
     return circlesGroup;
 }
+(async function() {
+        var censusData = await d3.csv("assets/data/data.csv").catch(err => console.log(err))
+
+        // Parse data. Convert CSV data to integers
+        censusData.forEach(function(data) {
+            data.id = +data.id;
+            data.poverty = +data.poverty;
+            data.povertyMoe = +data.povertyMoe;
+            data.age = +data.age;
+            data.ageMoe = +data.ageMoe;
+            data.income = +data.income;
+            data.incomeMoe = +data.incomeMoe;
+            data.healthcare = +data.healthcare;
+            data.healthcareLow = +data.healthcareLow;
+            data.healthcareHigh = +data.healthcareHigh;
+            data.obesity = +data.obesity;
+            data.obesityLow = +data.obesityLow;
+            data.obesityHigh = +data.obesityHigh;
+            data.smokes = +data.smokes;
+            data.smokesLow = +data.smokesLow;
+            data.smokesHigh = +data.smokesHigh;
+        });
