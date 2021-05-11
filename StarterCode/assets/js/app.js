@@ -125,3 +125,24 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     } else {
         ylabel = "Poverty:"
     }
+    var toolTip = d3.tip()
+        .attr("class", "tooltip")
+        .offset([40, 60])
+        .html(function(d) {
+            return (`<strong>${d.state}</strong>
+              <br>${xlabel} ${d[chosenXAxis]}
+              <br>${ylabel} ${d[chosenYAxis]}`);
+        });
+
+    circlesGroup.call(toolTip);
+
+    circlesGroup.on("mouseover", function(data) {
+            toolTip.show(data);
+        })
+        // onmouseout event
+        .on("mouseout", function(data, index) {
+            toolTip.hide(data);
+        });
+
+    return circlesGroup;
+}
