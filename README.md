@@ -2,6 +2,14 @@
 
 ![Newsroom](https://media.giphy.com/media/v2xIous7mnEYg/giphy.gif)
 
+
+Note: You'll need to use python -m http.server to run the visualization. This will host the page at localhost:8000 in your web browser.
+Or you can do what I do and use Live Server to open the page quicker and easier.
+
+
+
+
+
 ## Background
 
 Welcome to the newsroom! You've just accepted a data visualization position for a major metro paper. You're tasked with analyzing the current trends shaping people's lives, as well as creating charts, graphs, and interactive elements to help readers understand your findings.
