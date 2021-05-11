@@ -103,3 +103,25 @@ function renderYCircleText(textCircles, newYScale, chosenYAxis) {
 
     return textCircles;
 }
+// extra functions.
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+
+    var xlabel;
+    var ylabel;
+
+    if (chosenXAxis === "smokes") {
+        xlabel = "Smokers:"
+    } else if (chosenXAxis === "healthcare") {
+        xlabel = "No Healthcare:"
+    } else {
+        xlabel = "Obese:";
+    }
+
+
+    if (chosenYAxis === "age") {
+        ylabel = "Age:"
+    } else if (chosenYAxis === "income") {
+        ylabel = "Income:"
+    } else {
+        ylabel = "Poverty:"
+    }
