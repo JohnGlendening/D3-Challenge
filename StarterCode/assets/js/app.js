@@ -168,3 +168,50 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
             data.smokesLow = +data.smokesLow;
             data.smokesHigh = +data.smokesHigh;
         });
+
+        // xLinearScale function 
+        var xLinearScale = xScale(censusData, chosenXAxis);
+
+        // y scale function
+        var yLinearScale = yScale(censusData, chosenYAxis);
+
+        // axis functions
+        var bottomAxis = d3.axisBottom(xLinearScale);
+        var leftAxis = d3.axisLeft(yLinearScale);
+
+        // append x axis
+        var xAxis = chartGroup.append("g")
+            .classed("x-axis", true)
+            .attr("transform", `translate(0, ${height})`)
+            .call(bottomAxis);
+        // append y axis
+        var yAxis = chartGroup.append("g")
+            .classed("y-axis", true)
+            // .attr("transform")
+            .call(leftAxis);
+
+        // append initial circles
+        var circlesGroup = chartGroup.append("g")
+            .selectAll("circle")
+            .data(censusData)
+            .enter()
+            .append("circle")
+            .attr("cx", d => xLinearScale(d[chosenXAxis]))
+            .attr("cy", d => yLinearScale(d[chosenYAxis]))
+            .attr("r", 11)
+            .attr("fill", "green")
+            .attr("opacity", ".6");
+        // append text (state abbreviation) to inside of circles 
+        var textCircles = chartGroup.append("g")
+            .selectAll("text")
+            .data(censusData)
+            .enter()
+            .append("text")
+            .text(d => d.abbr)
+            .attr("x", d => xLinearScale(d[chosenXAxis]))
+            .attr("y", d => yLinearScale(d[chosenYAxis]) + 4)
+            .attr("font-family", "sans-serif")
+            .attr("text-anchor", "middle")
+            .attr("font-size", "10px")
+            .style("fill", "white")
+            .attr("font-weight", "bold");
