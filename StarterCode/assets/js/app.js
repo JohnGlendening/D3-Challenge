@@ -85,3 +85,21 @@ function renderYCircles(circlesGroup, newYScale, chosenYAxis) {
 
     return circlesGroup;
 }
+
+function renderXCircleText(textCircles, newXScale, chosenXAxis) {
+
+    textCircles.transition()
+        .duration(1000)
+        .attr("x", d => newXScale(d[chosenXAxis]));
+
+    return textCircles;
+}
+
+function renderYCircleText(textCircles, newYScale, chosenYAxis) {
+
+    textCircles.transition()
+        .duration(1000)
+        .attr("y", d => newYScale(d[chosenYAxis]) + 4);
+
+    return textCircles;
+}
