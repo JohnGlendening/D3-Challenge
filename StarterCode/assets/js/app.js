@@ -27,8 +27,8 @@ var chosenYAxis = "age";
 // functions to update x and y upon click
 function xScale(censusData, chosenXAxis) {
     var xLinearScale = d3.scaleLinear()
-        .domain([d3.min(censusData, d => d[chosenXAxis]) * 0.8,
-            d3.max(censusData, d => d[chosenXAxis]) * 1.2
+        .domain([d3.min(censusData, d => d[chosenXAxis]) * .5,
+            d3.max(censusData, d => d[chosenXAxis]) * 1.3
         ])
         .range([0, width]);
 
@@ -38,7 +38,7 @@ function xScale(censusData, chosenXAxis) {
 function yScale(censusData, chosenYAxis) {
     // create scales
     var yLinearScale = d3.scaleLinear()
-        .domain([d3.min(censusData, d => d[chosenYAxis]) * 0.8,
+        .domain([d3.min(censusData, d => d[chosenYAxis]) * 0.9,
             d3.max(censusData, d => d[chosenYAxis]) * 1.2
         ])
         .range([height, 0]);
@@ -202,7 +202,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         .attr("y", d => yLinearScale(d[chosenYAxis]) + 4)
         .attr("font-family", "sans-serif")
         .attr("text-anchor", "middle")
-        .attr("font-size", "10px")
+        .attr("font-size", "11px")
         .style("fill", "white")
         .attr("font-weight", "bold");
 
