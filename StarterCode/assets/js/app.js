@@ -25,7 +25,7 @@ var chartGroup = svg.append("g")
 var chosenXAxis = "smokes";
 var chosenYAxis = "age";
 
-// function to update scale upon click
+// functions to update x and y upon click
 function xScale(censusData, chosenXAxis) {
     var xLinearScale = d3.scaleLinear()
         .domain([d3.min(censusData, d => d[chosenXAxis]) * 0.8,
@@ -34,3 +34,16 @@ function xScale(censusData, chosenXAxis) {
         .range([0, width]);
 
     return xLinearScale;
+}
+
+function yScale(censusData, chosenYAxis) {
+    // create scales
+    var yLinearScale = d3.scaleLinear()
+        .domain([d3.min(censusData, d => d[chosenYAxis]) * 0.8,
+            d3.max(censusData, d => d[chosenYAxis]) * 1.2
+        ])
+        .range([height, 0]);
+
+    return yLinearScale;
+
+}
