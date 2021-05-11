@@ -215,3 +215,53 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
             .attr("font-size", "10px")
             .style("fill", "white")
             .attr("font-weight", "bold");
+
+        // Create group for three x-axis labels
+        var xLabelsGroup = chartGroup.append("g")
+            .attr("transform", `translate(${width / 2}, ${height + 30})`);
+
+        var smokesLabel = xLabelsGroup.append("text")
+            .attr("x", 0)
+            .attr("y", 20)
+            .attr("value", "smokes")
+            .classed("active", true)
+            .text("Smokers (%)");
+
+        var healthcareLabel = xLabelsGroup.append("text")
+            .attr("x", 0)
+            .attr("y", 40)
+            .attr("value", "healthcare") // value to grab for event listener
+            .classed("inactive", true)
+            .text("Lacks Healthcare (%)");
+
+        var obesityLabel = xLabelsGroup.append("text")
+            .attr("x", 0)
+            .attr("y", 60)
+            .attr("value", "obesity") // value to grab for event listener
+            .classed("inactive", true)
+            .text("Obesity (%)");
+
+        // Create group for three x-axis labels
+        var yLabelsGroup = chartGroup.append("g")
+            .attr("transform", "rotate(-90)");
+
+        var ageLabel = yLabelsGroup.append("text")
+            .attr("y", 0 - margin.left + 15)
+            .attr("x", 0 - (height / 2))
+            .attr("value", "age") // value to grab for event listener
+            .classed("active", true)
+            .text("Age (Median)");
+
+        var incomeLabel = yLabelsGroup.append("text")
+            .attr("y", 0 - margin.left + 35)
+            .attr("x", 0 - (height / 2))
+            .attr("value", "income")
+            .classed("inactive", true)
+            .text("Houshold Income (Median)");
+
+        var povertyLabel = yLabelsGroup.append("text")
+            .attr("y", 0 - margin.left + 55)
+            .attr("x", 0 - (height / 2))
+            .attr("value", "poverty")
+            .classed("inactive", true)
+            .text("Poverty (%)");
