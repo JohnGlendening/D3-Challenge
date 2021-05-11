@@ -265,3 +265,6 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
             .attr("value", "poverty")
             .classed("inactive", true)
             .text("Poverty (%)");
+
+        // updateToolTip function above csv import
+        var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
