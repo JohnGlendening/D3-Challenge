@@ -268,3 +268,27 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
         // updateToolTip function above csv import
         var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+
+        // x axis labels event listener
+        xLabelsGroup.selectAll("text")
+            .on("click", function() {
+                    // get value of selection
+                    var xValue = d3.select(this).attr("value");
+                    if (xValue !== chosenXAxis) {
+
+                        // replaces chosenXAxis with value
+                        chosenXAxis = xValue;
+
+                        // functions here found above csv import
+                        // updates x scale for new data
+                        xLinearScale = xScale(censusData, chosenXAxis);
+
+                        // updates x axis with transition
+                        xAxis = renderXAxes(xLinearScale, xAxis);
+
+                        // updates circles and circle text with new x values
+                        circlesGroup = renderXCircles(circlesGroup, xLinearScale, chosenXAxis);
+                        textCircles = renderXCircleText(textCircles, xLinearScale, chosenXAxis);
+
+                        // updates tooltips with new info
+                        circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
