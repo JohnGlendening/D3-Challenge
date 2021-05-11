@@ -169,28 +169,21 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         data.smokesHigh = +data.smokesHigh;
     });
 
-    // xLinearScale function 
     var xLinearScale = xScale(censusData, chosenXAxis);
 
-    // y scale function
     var yLinearScale = yScale(censusData, chosenYAxis);
 
-    // axis functions
     var bottomAxis = d3.axisBottom(xLinearScale);
     var leftAxis = d3.axisLeft(yLinearScale);
 
-    // append x axis
     var xAxis = chartGroup.append("g")
         .classed("x-axis", true)
         .attr("transform", `translate(0, ${height})`)
         .call(bottomAxis);
-    // append y axis
     var yAxis = chartGroup.append("g")
         .classed("y-axis", true)
-        // .attr("transform")
         .call(leftAxis);
 
-    // append initial circles
     var circlesGroup = chartGroup.append("g")
         .selectAll("circle")
         .data(censusData)
@@ -201,7 +194,6 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         .attr("r", 11)
         .attr("fill", "green")
         .attr("opacity", ".6");
-    // append text (state abbreviation) to inside of circles 
     var textCircles = chartGroup.append("g")
         .selectAll("text")
         .data(censusData)
@@ -216,7 +208,6 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         .style("fill", "white")
         .attr("font-weight", "bold");
 
-    // Create group for three x-axis labels
     var xLabelsGroup = chartGroup.append("g")
         .attr("transform", `translate(${width / 2}, ${height + 30})`);
 
@@ -230,25 +221,24 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     var healthcareLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 40)
-        .attr("value", "healthcare") // value to grab for event listener
+        .attr("value", "healthcare")
         .classed("inactive", true)
         .text("Lacks Healthcare (%)");
 
     var obesityLabel = xLabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
-        .attr("value", "obesity") // value to grab for event listener
+        .attr("value", "obesity")
         .classed("inactive", true)
         .text("Obesity (%)");
 
-    // Create group for three x-axis labels
     var yLabelsGroup = chartGroup.append("g")
         .attr("transform", "rotate(-90)");
 
     var ageLabel = yLabelsGroup.append("text")
         .attr("y", 0 - margin.left + 15)
         .attr("x", 0 - (height / 2))
-        .attr("value", "age") // value to grab for event listener
+        .attr("value", "age")
         .classed("active", true)
         .text("Age (Median)");
 
