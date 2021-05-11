@@ -10,7 +10,7 @@ var margin = {
 
 var width = svgWidth - margin.left - margin.right + 20;
 var height = svgHeight - margin.top - margin.bottom - 20;
-// SVG wrap to hold chart
+// SVG wrap 
 var svg = d3
     .select("#scatter")
     .append("svg")
